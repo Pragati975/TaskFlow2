@@ -1,0 +1,31 @@
+package com.pragati.taskflow.features.login.data
+
+import com.pragati.taskflow.foundation.datasource.preference.provider.CredentialProvider
+import com.pragati.taskflow.foundation.datasource.preference.provider.UserProvider
+import com.pragati.taskflow.foundation.datasource.server.ServerProvider
+import com.pragati.taskflow.model.Credential
+import com.pragati.taskflow.model.User
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.merge
+import kotlinx.coroutines.flow.onEach
+import javax.inject.Inject
+
+class LoginEnvironment @Inject constructor(
+    private val serverProvider: ServerProvider,
+    private val credentialProvider: CredentialProvider,
+    private val userProvider: UserProvider
+) : ILoginEnvironment {
+
+    override fun login(email: String, password: String): Flow<Any> {
+        return merge(
+            serverProvider.fetchCredential(),
+            serverProvider.fetchUser(email, password)
+        ).onEach {
+            when (it) {
+                is Credential -> credentialProvider.setCredential(it)
+                is User -> userProvider.setUser(it)
+            }
+        }
+    }
+
+}
