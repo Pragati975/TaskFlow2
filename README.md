@@ -1,3 +1,14 @@
+# TaskFlow2
+
+Android TaskFlow application — local project pushed to GitHub.
+
+## About
+
+This repository contains the TaskFlow Android app sources.
+
+## Build
+
+Open the project in Android Studio and build as usual.
 # TaskFlow
 
 A modern Android to-do app built with Jetpack Compose. TaskFlow helps you organize tasks into lists and groups, set reminders, schedule tasks, and track progress — all with a clean Material Design UI.

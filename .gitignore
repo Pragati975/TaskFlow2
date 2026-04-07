@@ -1,3 +1,26 @@
+# Gradle
+.gradle
+/build/
+/app/build/
+/**/build/
+
+# Android/IntelliJ
+.idea/
+*.iml
+local.properties
+captures/
+*.log
+
+# Kotlin
+.kotlin_module
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Misc
+*.keystore
+*.jks
 *.iml
 .gradle
 /local.properties
